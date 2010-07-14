@@ -29,7 +29,7 @@ puts cxt.eval("new EJS({text: templ, type: '<'}).render()")
 3.times{ puts }
 
 
-json = {
+hsh = {
   :key => "value",
   :nested => {
     :twigs => "swirl",
@@ -43,7 +43,7 @@ json = {
   }
 }
 
-json = json.to_json
+json = hsh.to_json
 @cxt = ejs_context()
 assignContentsOfFileToVariable(@cxt, "templ", "temlpates/hash.html.ejs")
 puts "complex new context nested render:"
@@ -63,15 +63,25 @@ def fancy(json)
   @cxt.eval(val)
 end
 
-n = 500
+
+
+n = 1000
 puts n.to_s+" Iterations"
-Benchmark.bm(20) do |x|
-   x.report("new context") { 1.upto(n) do ; cxt = V8::Context.new; end }
-   x.report("eval EJS"){ 1.upto(n){ @cxt.eval(@ejs) } }
-   x.report("setup template"){ 1.upto(n){ assignContentsOfFileToVariable(@cxt, "templ", "temlpates/hash.html.ejs")} }
-   x.report("compile template"){ 1.upto(n){ @cxt.eval("cached = new EJS({text: templ, type: '<'})") }}
-   x.report("setup") {  1.upto(n) do ; setup; end}
-   x.report("rendering") { for i in 1..n; a = "1"; 
-     fancy(json)
-  end }
+title_length = "compile template".length
+Benchmark.bm(title_length) do |x|
+  x.report("eval EJS"){ n.times{ @cxt.eval(@ejs) } }
+  x.report("setup template"){ n.times{ assignContentsOfFileToVariable(@cxt, "templ", "temlpates/hash.html.ejs")} }
+  x.report("compile template"){ n.times{ @cxt.eval("cached = new EJS({text: templ, type: '<'})") }}
+  x.report("rendering") { for i in 1..n; a = "1"; fancy(json) end }
+end
+
+
+
+
+@jerb = File.read("jerb.js")
+Benchmark.bm(title_length) do |x|
+  x.report("eval JERB"){ n.times{ @cxt.eval(@jerb) } }
+  x.report("setup template"){ n.times{ assignContentsOfFileToVariable(@cxt, "templ", "temlpates/hash.html.ejs")} }
+  x.report("compile template"){ n.times{ @cxt.eval("cached = new JERB(templ)") }}
+  x.report("rendering") { for i in 1..n; a = "1"; fancy(json) end }
 end
