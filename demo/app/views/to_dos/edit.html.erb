@@ -1,0 +1,20 @@
+<h1>Editing to_do</h1>
+
+<% form_for(@to_do) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :priority %><br />
+    <%= f.text_field :priority %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @to_do %> |
+<%= link_to 'Back', to_dos_path %>

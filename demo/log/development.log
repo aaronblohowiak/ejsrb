@@ -1,0 +1,2147 @@
+  [4;36;1mSQL (1.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (3.2ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateToDos (20100714071357)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "to_dos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "priority" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100714071357')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("to_dos")[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-14 00:16:38) [GET]
+
+ActionController::RoutingError (No route matches "/todo" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-14 00:16:42) [GET]
+
+ActionController::RoutingError (No route matches "/to_do" with {:method=>:get}):
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ToDosController#index (for 127.0.0.1 at 2010-07-14 00:16:56) [GET]
+  [4;36;1mToDo Load (0.6ms)[0m   [0;1mSELECT * FROM "to_dos" [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/index
+Completed in 80ms (View: 74, DB: 1) | 200 OK [http://localhost/to_dos]
+
+
+Processing ToDosController#new (for 127.0.0.1 at 2010-07-14 00:16:58) [GET]
+Rendering template within layouts/to_dos
+Rendering to_dos/new
+Completed in 14ms (View: 10, DB: 0) | 200 OK [http://localhost/to_dos/new]
+
+
+Processing ToDosController#create (for 127.0.0.1 at 2010-07-14 00:17:08) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"4vfY1xxPLsrJaYmZWsKEQIsqSlPNFTyhMdWH0JNjQgQ=", "to_do"=>{"title"=>"spank my monkey", "priority"=>"222222"}}
+  [4;35;1mToDo Create (0.5ms)[0m   [0mINSERT INTO "to_dos" ("created_at", "title", "updated_at", "priority") VALUES('2010-07-14 07:17:08', 'spank my monkey', '2010-07-14 07:17:08', 222222)[0m
+Redirected to http://localhost:3000/to_dos/1
+Completed in 13ms (DB: 1) | 302 Found [http://localhost/to_dos]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:17:08) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 12ms (View: 7, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:17:37) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.2ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+
+ActionView::MissingTemplate (Missing template to_dos/show.erb in view path app/views):
+  app/controllers/to_dos_controller.rb:18:in `show'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:18:13) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.3ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+
+ActionView::MissingTemplate (Missing template to_dos/show.erb in view path app/views):
+  app/controllers/to_dos_controller.rb:18:in `show'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:19:00) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+
+ActionView::MissingTemplate (Missing template to_dos/show.erb in view path app/views):
+  app/controllers/to_dos_controller.rb:18:in `show'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:19:17) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (undefined method `call' for Jerb::Render:Class) in app/views/to_dos/show.html.jerb:
+
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (116.6ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:20:04) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (wrong number of arguments (1 for 2)) in app/views/to_dos/show.html.jerb:
+
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (114.2ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:24:28) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (undefined method `call' for Jerb::Render:Class) in app/views/to_dos/show.html.jerb:
+
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (119.2ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:25:22) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (undefined method `call' for Jerb::Render:Class) in app/views/to_dos/show.html.jerb:
+
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (116.2ms)
+Rendered rescues/_request_and_response (1.5ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:31:01) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 18ms (View: 13, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:32:53) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.4ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 20ms (View: 13, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:33:12) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 19ms (View: 12, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:35:26) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+ERROR: compiling _run_jerb_app47views47to_dos47show46html46jerb RAISED compile error
+/Users/aaronblohowiak/js/ejsrb/demo/app/views/to_dos/show.html.jerb:1: syntax error, unexpected '<', expecting kEND
+            old_output_buffer = output_buffer;;<h1>TEST hello</h1>
+                                                ^
+/Users/aaronblohowiak/js/ejsrb/demo/app/views/to_dos/show.html.jerb:1: syntax error, unexpected tIDENTIFIER, expecting kDO or '{' or '('
+            old_output_buffer = output_buffer;;<h1>TEST hello</h1>
+                                                             ^
+/Users/aaronblohowiak/js/ejsrb/demo/app/views/to_dos/show.html.jerb:1: unterminated string meets end of file
+/Users/aaronblohowiak/js/ejsrb/demo/app/views/to_dos/show.html.jerb:1: syntax error, unexpected tSTRING_END, expecting tSTRING_CONTENT or tREGEXP_END or tSTRING_DBEG or tSTRING_DVAR
+Function body:           def _run_jerb_app47views47to_dos47show46html46jerb(local_assigns)
+            old_output_buffer = output_buffer;;<h1>TEST hello</h1>
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: /Users/aaronblohowiak/js/ejsrb/demo/app/views/to_dos/show.html.jerb:1:in `compile!'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:61:in `compile'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:28:in `render'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/template.rb:205:in `render_template'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:265:in `render'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:348:in `_render_with_layout'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:262:in `render'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1250:in `render_for_file'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:951:in `render_without_benchmark'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+/opt/local/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/opt/local/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/opt/local/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:135:in `send'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:135:in `custom'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:179:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:179:in `respond'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:173:in `each'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:173:in `respond'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:107:in `respond_to'
+/Users/aaronblohowiak/js/ejsrb/demo/app/controllers/to_dos_controller.rb:18:in `show'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1331:in `send'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1331:in `perform_action_without_filters'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:617:in `call_filters'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/opt/local/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/opt/local/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/opt/local/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/flash.rb:146:in `perform_action'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `send'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `process_without_filters'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:606:in `process'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:391:in `process'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:386:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:437:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:87:in `dispatch'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:121:in `_call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:9:in `cache'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:28:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/session/cookie_store.rb:93:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+/opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/webrick.rb:50:in `service'
+/opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/opt/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/webrick.rb:14:in `run'
+/opt/local/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/commands/server.rb:111
+/opt/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/opt/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+script/server:3
+
+ActionView::TemplateError (compile error
+/Users/aaronblohowiak/js/ejsrb/demo/app/views/to_dos/show.html.jerb:1: syntax error, unexpected '<', expecting kEND
+            old_output_buffer = output_buffer;;<h1>TEST hello</h1>
+                                                ^
+/Users/aaronblohowiak/js/ejsrb/demo/app/views/to_dos/show.html.jerb:1: syntax error, unexpected tIDENTIFIER, expecting kDO or '{' or '('
+            old_output_buffer = output_buffer;;<h1>TEST hello</h1>
+                                                             ^
+/Users/aaronblohowiak/js/ejsrb/demo/app/views/to_dos/show.html.jerb:1: unterminated string meets end of file
+/Users/aaronblohowiak/js/ejsrb/demo/app/views/to_dos/show.html.jerb:1: syntax error, unexpected tSTRING_END, expecting tSTRING_CONTENT or tREGEXP_END or tSTRING_DBEG or tSTRING_DVAR) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    app/views/to_dos/show.html.jerb:1:in `compile!'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (49.0ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:38:47) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (wrong number of arguments (1 for 2)) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    app/views/to_dos/show.html.jerb:1:in `initialize'
+    app/views/to_dos/show.html.jerb:1:in `new'
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (114.6ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:39:42) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (can't modify frozen class) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    lib/jerb.rb:8
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (123.0ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:42:11) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (can't modify frozen class) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    lib/jerb.rb:8
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (120.1ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:42:37) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (can't modify frozen class) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    lib/jerb.rb:8
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (119.7ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:46:38) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (can't modify frozen class) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    lib/jerb.rb:8
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (123.0ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:47:02) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (wrong number of arguments (1 for 2)) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    app/views/to_dos/show.html.jerb:1:in `initialize'
+    app/views/to_dos/show.html.jerb:1:in `new'
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (112.7ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:47:46) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (wrong number of arguments (1 for 2)) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    app/views/to_dos/show.html.jerb:1:in `initialize'
+    app/views/to_dos/show.html.jerb:1:in `new'
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (114.1ms)
+Rendered rescues/_request_and_response (1.5ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:48:57) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (Unexpected token ILLEGAL) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    lib/jerb.rb:16:in `render'
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (117.2ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:50:29) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (stack level too deep) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    lib/jerb.rb:15:in `render'
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (3130.9ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:51:27) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (stack level too deep) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    lib/jerb.rb:15:in `render'
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (3147.7ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:52:13) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.pop) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    lib/jerb.rb:15:in `render'
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (2986.9ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:52:38) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.pop) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    lib/jerb.rb:15:in `render'
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (3016.4ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:53:30) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (stack level too deep) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    lib/jerb.rb:16:in `render'
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (3141.2ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:54:17) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (stack level too deep) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    lib/jerb.rb:16:in `render'
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (3079.4ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:54:51) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (stack level too deep) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    lib/jerb.rb:17:in `render'
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (3113.6ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:55:20) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (stack level too deep) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    lib/jerb.rb:17:in `render'
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (3073.8ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:55:52) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.pop) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    lib/jerb.rb:18:in `render'
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (3003.4ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:56:50) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (undefined method `keys' for #<Array:0x1038a39b0>) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    lib/jerb.rb:15:in `render'
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (112.6ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:57:03) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (undefined method `keys' for #<Array:0x1038a39d8>) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    lib/jerb.rb:15:in `render'
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (112.6ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:58:52) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.pop) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    lib/jerb.rb:18:in `render'
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (3058.8ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:59:07) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (stack level too deep) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    lib/jerb.rb:18:in `render'
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (3097.1ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 00:59:47) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (stack level too deep) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    lib/jerb.rb:18:in `render'
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (3101.0ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:19:59) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (stack level too deep) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    /opt/local/lib/ruby/gems/1.8/gems/yajl-ruby-0.7.7/lib/yajl.rb:75:in `encode'
+    lib/jerb.rb:15:in `render'
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:18:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (3204.1ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:26:34) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (undefined method `call' for Jerb::Render:Class) in app/views/to_dos/show.html.jerb:
+
+    app/controllers/to_dos_controller.rb:23:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (116.4ms)
+Rendered rescues/_request_and_response (1.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:27:31) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (undefined method `call' for Jerb::Render:Class) in app/views/to_dos/show.html.jerb:
+
+    app/controllers/to_dos_controller.rb:23:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (115.3ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:27:33) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.2ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (undefined method `call' for Jerb::Render:Class) in app/views/to_dos/show.html.jerb:
+
+    app/controllers/to_dos_controller.rb:23:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (50.2ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:27:33) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (undefined method `call' for Jerb::Render:Class) in app/views/to_dos/show.html.jerb:
+
+    app/controllers/to_dos_controller.rb:23:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (44.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:27:34) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.2ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (undefined method `call' for Jerb::Render:Class) in app/views/to_dos/show.html.jerb:
+
+    app/controllers/to_dos_controller.rb:23:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (45.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:27:43) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (wrong number of arguments (1 for 0)) in app/views/to_dos/show.html.jerb:
+
+    app/controllers/to_dos_controller.rb:23:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (120.7ms)
+Rendered rescues/_request_and_response (1.5ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:28:05) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.3ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 22ms (View: 14, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:28:06) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.2ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 9ms (View: 1, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:28:25) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (Unexpected token ILLEGAL) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:23:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (117.7ms)
+Rendered rescues/_request_and_response (1.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:29:13) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (Unexpected token ILLEGAL) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:23:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (122.6ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:34:30) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (to_do is not defined) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    at Object.anonymous (eval at <anonymous> (lib/jerb/jerb.js:71:23))
+    at JERB.render (lib/jerb/jerb.js:97:26)
+    at <eval>:1:122
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:23:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (122.0ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:35:32) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.2ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (to_do is not defined) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    at Object.anonymous (eval at <anonymous> (lib/jerb/jerb.js:71:23))
+    at JERB.render (lib/jerb/jerb.js:97:26)
+    at <eval>:1:122
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:22:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (47.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:35:34) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (to_do is not defined) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    at Object.anonymous (eval at <anonymous> (lib/jerb/jerb.js:71:23))
+    at JERB.render (lib/jerb/jerb.js:97:26)
+    at <eval>:1:122
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:22:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (123.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:35:48) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (to_do is not defined) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    at Object.anonymous (eval at <anonymous> (lib/jerb/jerb.js:71:23))
+    at JERB.render (lib/jerb/jerb.js:97:26)
+    at <eval>:1:122
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:22:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (121.4ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:36:13) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.2ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (Cannot read property 'title' of undefined) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= this.to_do.title %>
+4: </p>
+
+    at Object.anonymous (eval at <anonymous> (lib/jerb/jerb.js:71:23))
+    at JERB.render (lib/jerb/jerb.js:97:26)
+    at <eval>:1:127
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:22:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (53.2ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:36:46) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (to_do is not defined) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    at Object.anonymous (eval at <anonymous> (lib/jerb/jerb.js:71:23))
+    at JERB.render (lib/jerb/jerb.js:97:26)
+    at <eval>:1:122
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:22:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (125.0ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:38:36) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (to_do is not defined) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    at Object.anonymous (eval at <anonymous> (lib/jerb/jerb.js:71:23))
+    at JERB.render (lib/jerb/jerb.js:97:26)
+    at <eval>:1:122
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:22:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (129.8ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:40:28) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (dlopen(/opt/local/lib/ruby/gems/1.8/gems/ruby-debug-base-0.10.3/lib/ruby_debug.bundle, 9): no suitable image found.  Did find:
+	/opt/local/lib/ruby/gems/1.8/gems/ruby-debug-base-0.10.3/lib/ruby_debug.bundle: mach-o, but wrong architecture - /opt/local/lib/ruby/gems/1.8/gems/ruby-debug-base-0.10.3/lib/ruby_debug.bundle) in app/views/to_dos/show.html.jerb:
+
+    /opt/local/lib/ruby/gems/1.8/gems/ruby-debug-base-0.10.3/lib/ruby_debug.bundle
+    /opt/local/lib/ruby/gems/1.8/gems/ruby-debug-base-0.10.3/lib/ruby-debug-base.rb:1
+    /opt/local/lib/ruby/gems/1.8/gems/ruby-debug-0.10.3/cli/ruby-debug.rb:5
+    lib/jerb.rb:25:in `call'
+    app/controllers/to_dos_controller.rb:22:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (56.9ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:53:33) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (to_do is not defined) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    at Object.anonymous (eval at <anonymous> (lib/jerb/jerb.js:71:23))
+    at JERB.render (lib/jerb/jerb.js:97:26)
+    at <eval>:1:122
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:22:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (226.0ms)
+Rendered rescues/_request_and_response (2.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:54:17) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (to_do is not defined) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    at Object.anonymous (eval at <anonymous> (lib/jerb/jerb.js:71:23))
+    at JERB.render (lib/jerb/jerb.js:97:26)
+    at <eval>:1:122
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:22:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (123.1ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:55:01) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.3ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (to_do is not defined) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    at Object.anonymous (eval at <anonymous> (lib/jerb/jerb.js:71:23))
+    at JERB.render (lib/jerb/jerb.js:97:26)
+    at <eval>:1:122
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:22:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (123.9ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:55:33) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (to_do is not defined) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    at Object.anonymous (eval at <anonymous> (lib/jerb/jerb.js:71:23))
+    at JERB.render (lib/jerb/jerb.js:97:26)
+    at <eval>:1:122
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:22:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (130.6ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:57:17) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (to_do is not defined) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    at Object.anonymous (eval at <anonymous> (lib/jerb/jerb.js:71:23))
+    at JERB.render (lib/jerb/jerb.js:97:26)
+    at <eval>:1:122
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:22:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (127.3ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:58:07) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.2ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+  [4;36;1mToDo Load (0.1ms)[0m   [0;1mSELECT * FROM "to_dos" LIMIT 1[0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (to_do is not defined) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    at Object.anonymous (eval at <anonymous> (lib/jerb/jerb.js:71:23))
+    at JERB.render (lib/jerb/jerb.js:97:26)
+    at <eval>:1:122
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:27:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (47.7ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:59:51) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (to_do is not defined) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    at Object.anonymous (eval at <anonymous> (lib/jerb/jerb.js:71:23))
+    at JERB.render (lib/jerb/jerb.js:97:26)
+    at <eval>:1:122
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:24:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (129.0ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 21:59:51) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.2ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+
+ActionView::TemplateError (to_do is not defined) on line #1 of app/views/to_dos/show.html.jerb:
+1: <p>
+2:   <b>Title:</b>
+3:   <%= to_do.title %>
+4: </p>
+
+    at Object.anonymous (eval at <anonymous> (lib/jerb/jerb.js:71:23))
+    at JERB.render (lib/jerb/jerb.js:97:26)
+    at <eval>:1:122
+    app/views/to_dos/show.html.jerb:1:in `_run_jerb_app47views47to_dos47show46html46jerb'
+    app/controllers/to_dos_controller.rb:24:in `show'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (52.4ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:00:52) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 73ms (View: 67, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:01:23) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 82ms (View: 77, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:02:26) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 74ms (View: 68, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:22) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 71ms (View: 64, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:35) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.1ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:36) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 71ms (View: 3, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:37) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.2ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 11ms (View: 3, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:38) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 13ms (View: 7, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:38) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.2ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 13ms (View: 6, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:38) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (3.0ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 17ms (View: 9, DB: 3) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:39) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.2ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 10ms (View: 3, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:39) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.3ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 15ms (View: 5, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:39) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.2ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:40) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:40) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.2ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 14ms (View: 4, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:40) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 10ms (View: 3, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:41) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.2ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:41) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (1.4ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 19ms (View: 11, DB: 1) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:41) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.2ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 18ms (View: 7, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:42) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 13ms (View: 5, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:46) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.1ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:46) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 11ms (View: 3, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:47) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.1ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 10ms (View: 4, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:47) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.2ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 9ms (View: 3, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:47) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.2ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 9ms (View: 3, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:47) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.1ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:47) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.1ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 12ms (View: 3, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:47) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.1ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 10ms (View: 3, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:48) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mToDo Load (0.2ms)[0m   [0mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 11ms (View: 4, DB: 0) | 200 OK [http://localhost/to_dos/1]
+
+
+Processing ToDosController#show (for 127.0.0.1 at 2010-07-14 22:03:48) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mToDo Load (0.4ms)[0m   [0;1mSELECT * FROM "to_dos" WHERE ("to_dos"."id" = 1) [0m
+Rendering template within layouts/to_dos
+Rendering to_dos/show
+Completed in 10ms (View: 3, DB: 0) | 200 OK [http://localhost/to_dos/1]

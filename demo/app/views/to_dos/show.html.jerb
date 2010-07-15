@@ -1,0 +1,9 @@
+<p>
+  <b>Title:</b>
+  <%= to_do.title %>
+</p>
+
+<p>
+  <b>Priority:</b>
+  <%= to_do.priority %>
+</p>
